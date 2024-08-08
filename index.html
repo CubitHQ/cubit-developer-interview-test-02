@@ -29,6 +29,7 @@
 
   <script>
     // Embedded JSON data
+    // This constant JSON is used as a new option tag that will be appended to the select tag.
     const characters = [
       { id: 1, name: 'Harry Potter', quote: 'I solemnly swear that I am up to no good.' },
       { id: 2, name: 'Hermione Granger', quote: "It's Wingardium LeviOsa, not LeviosAR!" },
@@ -44,8 +45,9 @@
 
 
     document.addEventListener("DOMContentLoaded", function() {
-      const dropdown = document.getElementById('characters');
+      const dropdown = document.getElementById('characters-dropdown');
 
+      // iterating the characters in JSON to create a new option tag and appending it to the select tag.
       characters.forEach(character => {
         const option = document.createElement('option');
         option.value = character.id;
@@ -53,6 +55,7 @@
         dropdown.appendChild(option);
       });
 
+      // adding a function in the click event that will show a quote based on the select tag value.
       document.getElementById('display-quote-button').addEventListener('click', function() {
         const selectedCharacterId = dropdown.value;
         const character = characters.find(char => char.id == selectedCharacterId);
